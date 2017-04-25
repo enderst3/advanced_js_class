@@ -70,6 +70,6 @@ describe('ProductRow', () => {
     )
     const itemObject = wrapper.find('.item-color')
     expect(itemObject.node.props.style.color).toBe('black')
-    // console.log(itemObject.node.props)
+    
   })
 })
