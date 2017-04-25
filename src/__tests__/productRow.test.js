@@ -50,4 +50,26 @@ describe('ProductRow', () => {
     // console.log(itemObject.node.props)
   })
 
+
+  it('will show in stock items in black', () => {
+    const callback = jest.fn();
+
+    const wrapper = shallow(
+      <ProductRow
+        currentCategory='electronics'
+        category='electronics'
+        name='iphone 7'
+        price={429}
+        stocked={true}
+        inStock={true}
+        isBuying={{}}
+        searchTerm=''
+        onIsBuying={callback}
+      />
+
+    )
+    const itemObject = wrapper.find('.item-color')
+    expect(itemObject.node.props.style.color).toBe('black')
+    // console.log(itemObject.node.props)
+  })
 })
