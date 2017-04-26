@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 // import './App.css'
 import SearchBox from './SearchBox'
-import ProductRow from './ProductRow'
+// import ProductRow from './ProductRow'
 import ProductLine from './ProductLine'
-import ProductData from './ProductData'
-import ProductHeadline from './ProductHeadline'
+// import ProductData from './ProductData'
+// import ProductHeadline from './ProductHeadline'
 
 const SERVER_DATA = [
   {category: 'Sporting Goods', price: 49.99, stocked: true, name: 'Football'},
@@ -22,11 +22,12 @@ converts catedgory and name to a valid key string
 @returns {string} - valid HTML id
 */
 
-
-
 class App extends Component {
   constructor (props) {
     super(props)
+    this.onFilterTextInput = this.onFilterTextInput.bind(this)
+    this.onFilterCheckBoxInput = this.onFilterCheckBoxInput.bind(this)
+    this.onIsBuying = this.onIsBuying.bind(this)
     this.state = {
       searchTerm: '',
       inStock: false,
@@ -57,7 +58,7 @@ class App extends Component {
    * @param value {bool} - selected or not
    * @param price {Number} - how much it costs
    */
-  onIsBuying(key, value, price) {
+  onIsBuying (key, value, price) {
     let newTotal
     if (value) {
       newTotal = this.state.total + price
@@ -76,21 +77,20 @@ class App extends Component {
         <SearchBox
           searchTerm={this.state.searchTerm}
           inStock={this.state.inStock}
-          onFilterTextInput={this.onFilterTextInput.bind(this)}
-          onFilterCheckBoxInput={this.onFilterCheckBoxInput.bind(this)}
+          onFilterTextInput={this.onFilterTextInput}
+          onFilterCheckBoxInput={this.onFilterCheckBoxInput}
         />
         <ProductLine
           catalog={SERVER_DATA}
           searchTerm={this.state.searchTerm}
           inStock={this.state.inStock}
           isBuying={this.state.isBuying}
-          onIsBuying={this.onIsBuying.bind(this)}
+          onIsBuying={this.onIsBuying}
         />
         <p id='total-price'>{this.state.total}</p>
       </div>
     )
   }
 }
-
 
 export default App

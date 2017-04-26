@@ -1,18 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import App from '../App'
-import { shallow, mount, render } from 'enzyme'
+import { shallow } from 'enzyme'
+/* global it describe beforeEach expect */
 // import renderer from 'react-test-renderer';
-
 
 // global it describe
 
-describe("app", () => {
+describe('app', () => {
   describe('onIsBuying', () => {
     let app, wrapper
 
     beforeEach(() => {
-      wrapper = shallow(<App/>)
+      wrapper = shallow(<App />)
       app = wrapper.instance()
     })
 

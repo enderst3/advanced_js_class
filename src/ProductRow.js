@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
+import propTypes from 'prop-types'
 
-function makeKey(category, name) {
+function makeKey (category, name) {
   const convertedCategory = category.toLowerCase().replace(/ /g, '-')
   const convertedName = name.toLowerCase().replace(/ /g, '-')
   return `${convertedCategory}-${convertedName}`
 }
 
 export default class ProductRow extends Component {
-
+  constructor (props) {
+    super (props)
+    this.handleOnIsBuying = this.handleOnIsBuying.bind(this)
+  }
   handleOnIsBuying (e) {
     const value = e.target.checked
     let key = `${this.props.currentCategory}${this.props.name}`
     this.props.onIsBuying(key, value, this.props.price)
   }
-
   render () {
     const filterMatch = this.props.name.indexOf(this.props.searchTerm) !== -1
     let style = {color: 'black'}
@@ -25,13 +28,13 @@ export default class ProductRow extends Component {
       let amIChecked = this.props.isBuying[key] || false
       if (!this.props.inStock || this.props.stocked) {
         if (filterMatch) {
-          return(
+          return (
             <tr>
               <td className='item-color' style={style}>
                 <input
                   id={makeKey(this.props.currentCategory, this.props.name)}
-                  checked={amIChecked} type="checkbox"
-                  onChange={this.handleOnIsBuying.bind(this)}
+                  checked={amIChecked} type='checkbox'
+                  onChange={this.handleOnIsBuying}
                />{this.props.name}
               </td>
               <td>${this.props.price}</td>
@@ -42,4 +45,16 @@ export default class ProductRow extends Component {
     }
     return null
   }
+}
+
+ProductRow.propTypes = {
+  currentCategory: propTypes.string,
+  searchTerm: propTypes.string,
+  inStock: propTypes.bool,
+  isBuying: propTypes.object,
+  onIsBuying: propTypes.func,
+  name: propTypes.string,
+  price: propTypes.number,
+  category: propTypes.string,
+  stocked: propTypes.bool
 }

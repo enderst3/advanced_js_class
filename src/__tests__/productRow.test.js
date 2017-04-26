@@ -1,14 +1,14 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import ProductRow from '../ProductRow'
-import { shallow, mount, render } from 'enzyme'
+import { shallow } from 'enzyme'
+/* global it describe expect jest */
 // import renderer from 'react-test-renderer';
 
-/* global is describe */
+/* global it describe */
 
 describe('ProductRow', () => {
   it('performs callback functionality', () => {
-    const callback = jest.fn();
+    const callback = jest.fn()
 
     const wrapper = shallow(
       <ProductRow
@@ -16,20 +16,20 @@ describe('ProductRow', () => {
         category='electronics'
         name='iphone 7'
         price={429}
-        stocked={true}
-        inStock={true}
+        stocked
+        inStock
         isBuying={{}}
         searchTerm=''
         onIsBuying={callback}
       />
     )
-    const inputObject = wrapper .find('input')
+    const inputObject = wrapper.find('input')
     inputObject.simulate('change', {target: {checked: true}})
     expect(callback.mock.calls).toEqual([['electronicsiphone 7', true, 429]])
   })
 
   it('will show out of stock items in red', () => {
-    const callback = jest.fn();
+    const callback = jest.fn()
 
     const wrapper = shallow(
       <ProductRow
@@ -50,9 +50,8 @@ describe('ProductRow', () => {
     // console.log(itemObject.node.props)
   })
 
-
   it('will show in stock items in black', () => {
-    const callback = jest.fn();
+    const callback = jest.fn()
 
     const wrapper = shallow(
       <ProductRow
@@ -60,8 +59,8 @@ describe('ProductRow', () => {
         category='electronics'
         name='iphone 7'
         price={429}
-        stocked={true}
-        inStock={true}
+        stocked
+        inStock
         isBuying={{}}
         searchTerm=''
         onIsBuying={callback}
@@ -70,6 +69,5 @@ describe('ProductRow', () => {
     )
     const itemObject = wrapper.find('.item-color')
     expect(itemObject.node.props.style.color).toBe('black')
-    
   })
 })
