@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
+import {Table} from 'react-bootstrap'
 
 function makeKey (category, name) {
   const convertedCategory = category.toLowerCase().replace(/ /g, '-')
@@ -29,16 +30,21 @@ export default class ProductRow extends Component {
       if (!this.props.inStock || this.props.stocked) {
         if (filterMatch) {
           return (
-            <tr>
-              <td className='item-color' style={style}>
-                <input
-                  id={makeKey(this.props.currentCategory, this.props.name)}
-                  checked={amIChecked} type='checkbox'
-                  onChange={this.handleOnIsBuying}
-               />{this.props.name}
-              </td>
-              <td>${this.props.price}</td>
-            </tr>
+            <Table bordered>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      id={makeKey(this.props.currentCategory, this.props.name)}
+                      checked={amIChecked} type='checkbox'
+                      onChange={this.handleOnIsBuying}
+                    /></td>
+                  <td className='item-color' style={style}>
+                    {this.props.name}</td>
+                  <td>${this.props.price}</td>
+                </tr>
+              </tbody>
+            </Table>
           )
         }
       }

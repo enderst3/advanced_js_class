@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProductRow from './ProductRow'
 import propTypes from 'prop-types'
+import {Table} from 'react-bootstrap'
 
 export default class ProductData extends Component {
   _generateTableGuts () {
@@ -40,9 +41,11 @@ export default class ProductData extends Component {
   render () {
     const tableRow = this._generateTableGuts()
     return (
-      <tbody>
-        {tableRow}
-      </tbody>
+      <Table>
+
+          {tableRow}
+
+      </Table>
     )
   }
 }

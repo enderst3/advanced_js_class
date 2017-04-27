@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import {Table} from 'react-bootstrap'
 
 export default class ProductHeadline extends Component {
   render () {
     return (
-      <thead>
-        <tr><td>Name</td><td>Price</td></tr>
-      </thead>
+      <Table bordered>
+        <thead>
+          <tr><td>Name</td><td>Price</td></tr>
+        </thead>
+      </Table>
     )
   }
 }

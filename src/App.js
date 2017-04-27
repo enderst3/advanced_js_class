@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 // import './App.css'
 import SearchBox from './SearchBox'
-// import ProductRow from './ProductRow'
 import ProductLine from './ProductLine'
-// import ProductData from './ProductData'
-// import ProductHeadline from './ProductHeadline'
+import {Jumbotron, Row, Col, Grid, Well, Panel} from 'react-bootstrap'
 
 const SERVER_DATA = [
   {category: 'Sporting Goods', price: 49.99, stocked: true, name: 'Football'},
@@ -73,22 +71,35 @@ class App extends Component {
 
   render () {
     return (
-      <div>
-        <SearchBox
-          searchTerm={this.state.searchTerm}
-          inStock={this.state.inStock}
-          onFilterTextInput={this.onFilterTextInput}
-          onFilterCheckBoxInput={this.onFilterCheckBoxInput}
-        />
-        <ProductLine
-          catalog={SERVER_DATA}
-          searchTerm={this.state.searchTerm}
-          inStock={this.state.inStock}
-          isBuying={this.state.isBuying}
-          onIsBuying={this.onIsBuying}
-        />
-        <p id='total-price'>{this.state.total}</p>
-      </div>
+
+      <Grid>
+        <Row className="show-grid">
+          <Col xs={8} xsOffset={2}>
+            <Panel footer='&copy; My Place Inc.'>
+              <Jumbotron>
+                <h1>Welcome to my shop!</h1>
+                <p>We do not carry much but what we have is expensive!</p>
+              </Jumbotron>
+              <SearchBox
+                searchTerm={this.state.searchTerm}
+                inStock={this.state.inStock}
+                onFilterTextInput={this.onFilterTextInput}
+                onFilterCheckBoxInput={this.onFilterCheckBoxInput}
+              />
+              <ProductLine
+                catalog={SERVER_DATA}
+                searchTerm={this.state.searchTerm}
+                inStock={this.state.inStock}
+                isBuying={this.state.isBuying}
+                onIsBuying={this.onIsBuying}
+              />
+              <Well>
+                <p id='total-price'>Total: {this.state.total}</p>
+              </Well>
+            </Panel>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }
