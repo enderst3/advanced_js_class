@@ -74,27 +74,29 @@ class App extends Component {
 
       <Grid>
         <Row className="show-grid">
-          <Col xs={8} xsOffset={2}>
-            <Panel footer='&copy; My Place Inc.'>
+          <Col xs={10} xsOffset={1}>
+            <Panel footer='&copy;2017  My Place Inc.'>
               <Jumbotron>
                 <h1>Welcome to my shop!</h1>
                 <p>We do not carry much but what we have is expensive!</p>
               </Jumbotron>
-              <SearchBox
-                searchTerm={this.state.searchTerm}
-                inStock={this.state.inStock}
-                onFilterTextInput={this.onFilterTextInput}
-                onFilterCheckBoxInput={this.onFilterCheckBoxInput}
-              />
-              <ProductLine
-                catalog={SERVER_DATA}
-                searchTerm={this.state.searchTerm}
-                inStock={this.state.inStock}
-                isBuying={this.state.isBuying}
-                onIsBuying={this.onIsBuying}
-              />
+
+                <SearchBox
+                  searchTerm={this.state.searchTerm}
+                  inStock={this.state.inStock}
+                  onFilterTextInput={this.onFilterTextInput}
+                  onFilterCheckBoxInput={this.onFilterCheckBoxInput}
+                />
+                <ProductLine
+                  catalog={SERVER_DATA}
+                  searchTerm={this.state.searchTerm}
+                  inStock={this.state.inStock}
+                  isBuying={this.state.isBuying}
+                  onIsBuying={this.onIsBuying}
+                />
+
               <Well>
-                <p id='total-price'>Total: {this.state.total}</p>
+                <p id='total-price'>Total: ${this.state.total}</p>
               </Well>
             </Panel>
           </Col>

@@ -7,7 +7,7 @@ import {Table} from 'react-bootstrap'
 export default class ProductLine extends Component {
   render () {
     return (
-      <Table bordered>
+      <Table>
         <thead>
          <ProductHeadline />
         </thead>

@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductRow, { makeKey } from '../ProductRow'
+import ProductRow from '../ProductRow'
 import { shallow } from 'enzyme'
 
 // import renderer from 'react-test-renderer';

@@ -6,7 +6,7 @@ export default class ProductHeadline extends Component {
     return (
       <Table bordered>
         <thead>
-          <tr><td>Name</td><td>Price</td></tr>
+          <tr><td>Buy</td><td>Name</td><td>Price</td></tr>
         </thead>
       </Table>
     )

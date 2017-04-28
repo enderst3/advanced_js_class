@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
-import {Table} from 'react-bootstrap'
+// import {Table} from 'react-bootstrap'
 
 function makeKey (category, name) {
   const convertedCategory = category.toLowerCase().replace(/ /g, '-')
   const convertedName = name.toLowerCase().replace(/ /g, '-')
   return `${convertedCategory}-${convertedName}`
 }
-
 export default class ProductRow extends Component {
   constructor (props) {
     super (props)
@@ -30,7 +29,7 @@ export default class ProductRow extends Component {
       if (!this.props.inStock || this.props.stocked) {
         if (filterMatch) {
           return (
-            <Table bordered>
+
               <tbody>
                 <tr>
                   <td>
@@ -44,7 +43,7 @@ export default class ProductRow extends Component {
                   <td>${this.props.price}</td>
                 </tr>
               </tbody>
-            </Table>
+
           )
         }
       }

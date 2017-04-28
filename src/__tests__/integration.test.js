@@ -45,14 +45,14 @@ describe('Filter tests', () => {
 describe('Pricing tests', () => {
   it('will render zero when unchecked', () => {
     const app = mount(<App />)
-    expect(app.find('#total-price').text()).toBe('0')
+    expect(app.find('#total-price').text()).toBe('Total: $0')
   })
 
   it('put the correct value when clicking once on iphone', () => {
     const app = mount(<App />)
     const event = {target: {checked: true}}
     app.find('#electronics-iphone-5').simulate('change', event)
-    expect(app.find('#total-price').text()).toBe('399.99')
+    expect(app.find('#total-price').text()).toBe('Total: $399.99')
   })
 
   it('put the correct value when clicking twice on iphone', () => {
@@ -61,7 +61,7 @@ describe('Pricing tests', () => {
     app.find('#electronics-iphone-5').simulate('change', event)
     const eventTwo = {target: {checked: false}}
     app.find('#electronics-iphone-5').simulate('change', eventTwo)
-    expect(app.find('#total-price').text()).toBe('0')
+    expect(app.find('#total-price').text()).toBe('Total: $0')
   })
 
   it('adds values together properly', () => {
@@ -70,7 +70,7 @@ describe('Pricing tests', () => {
     app.find('#sporting-goods-football').simulate('change', event)
     const eventTwo = {target: {checked: true}}
     app.find('#electronics-iphone-5').simulate('change', eventTwo)
-    expect(app.find('#total-price').text()).toBe('449.98')
+    expect(app.find('#total-price').text()).toBe('Total: $449.98')
   })
 })
 
@@ -115,14 +115,14 @@ describe('Filter tests', () => {
 describe('Pricing tests', () => {
   it('will render zero when unchecked', () => {
     const app = mount(<App />)
-    expect(app.find('#total-price').text()).toBe('0')
+    expect(app.find('#total-price').text()).toBe('Total: $0')
   })
 
   it('put the correct value when clicking once on iphone', () => {
     const app = mount(<App />)
     const event = {target: {checked: true}}
     app.find('#electronics-iphone-5').simulate('change', event)
-    expect(app.find('#total-price').text()).toBe('399.99')
+    expect(app.find('#total-price').text()).toBe('Total: $399.99')
   })
 
   it('put the correct value when clicking twice on iphone', () => {
@@ -131,7 +131,7 @@ describe('Pricing tests', () => {
     app.find('#electronics-iphone-5').simulate('change', event)
     const eventTwo = {target: {checked: false}}
     app.find('#electronics-iphone-5').simulate('change', eventTwo)
-    expect(app.find('#total-price').text()).toBe('0')
+    expect(app.find('#total-price').text()).toBe('Total: $0')
   })
 
   it('adds values together properly', () => {
@@ -140,6 +140,6 @@ describe('Pricing tests', () => {
     app.find('#sporting-goods-football').simulate('change', event)
     const eventTwo = {target: {checked: true}}
     app.find('#electronics-iphone-5').simulate('change', eventTwo)
-    expect(app.find('#total-price').text()).toBe('449.98')
+    expect(app.find('#total-price').text()).toBe('Total: $449.98')
   })
 })
