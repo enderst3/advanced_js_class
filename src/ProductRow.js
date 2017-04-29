@@ -9,7 +9,7 @@ function makeKey (category, name) {
 }
 export default class ProductRow extends Component {
   constructor (props) {
-    super (props)
+    super(props)
     this.handleOnIsBuying = this.handleOnIsBuying.bind(this)
   }
   handleOnIsBuying (e) {
@@ -29,21 +29,19 @@ export default class ProductRow extends Component {
       if (!this.props.inStock || this.props.stocked) {
         if (filterMatch) {
           return (
-
-              <tbody>
-                <tr>
-                  <td>
-                    <input
-                      id={makeKey(this.props.currentCategory, this.props.name)}
-                      checked={amIChecked} type='checkbox'
-                      onChange={this.handleOnIsBuying}
-                    /></td>
-                  <td className='item-color' style={style}>
-                    {this.props.name}</td>
-                  <td>${this.props.price}</td>
-                </tr>
-              </tbody>
-
+            <tbody>
+              <tr>
+                <td>
+                  <input
+                    id={makeKey(this.props.currentCategory, this.props.name)}
+                    checked={amIChecked} type='checkbox'
+                    onChange={this.handleOnIsBuying}
+                  /></td>
+                <td className='item-color' style={style}>
+                  {this.props.name}</td>
+                <td>${this.props.price}</td>
+              </tr>
+            </tbody>
           )
         }
       }

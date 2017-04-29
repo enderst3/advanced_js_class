@@ -9,7 +9,7 @@ export default class ProductLine extends Component {
     return (
       <Table>
         <thead>
-         <ProductHeadline />
+          <ProductHeadline />
         </thead>
         <tbody>
           <ProductData

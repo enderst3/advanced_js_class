@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-// import './App.css'
 import SearchBox from './SearchBox'
 import ProductLine from './ProductLine'
 import {Jumbotron, Row, Col, Grid, Well, Panel} from 'react-bootstrap'
@@ -73,7 +72,7 @@ class App extends Component {
     return (
 
       <Grid>
-        <Row className="show-grid">
+        <Row className='show-grid'>
           <Col xs={10} xsOffset={1}>
             <Panel footer='&copy;2017  My Place Inc.'>
               <Jumbotron>
@@ -81,19 +80,19 @@ class App extends Component {
                 <p>We do not carry much but what we have is expensive!</p>
               </Jumbotron>
 
-                <SearchBox
-                  searchTerm={this.state.searchTerm}
-                  inStock={this.state.inStock}
-                  onFilterTextInput={this.onFilterTextInput}
-                  onFilterCheckBoxInput={this.onFilterCheckBoxInput}
-                />
-                <ProductLine
-                  catalog={SERVER_DATA}
-                  searchTerm={this.state.searchTerm}
-                  inStock={this.state.inStock}
-                  isBuying={this.state.isBuying}
-                  onIsBuying={this.onIsBuying}
-                />
+              <SearchBox
+                searchTerm={this.state.searchTerm}
+                inStock={this.state.inStock}
+                onFilterTextInput={this.onFilterTextInput}
+                onFilterCheckBoxInput={this.onFilterCheckBoxInput}
+              />
+              <ProductLine
+                catalog={SERVER_DATA}
+                searchTerm={this.state.searchTerm}
+                inStock={this.state.inStock}
+                isBuying={this.state.isBuying}
+                onIsBuying={this.onIsBuying}
+              />
 
               <Well>
                 <p id='total-price'>Total: ${this.state.total}</p>

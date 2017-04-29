@@ -42,9 +42,7 @@ export default class ProductData extends Component {
     const tableRow = this._generateTableGuts()
     return (
       <Table>
-
-          {tableRow}
-
+        {tableRow}
       </Table>
     )
   }
