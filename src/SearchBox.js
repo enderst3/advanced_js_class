@@ -4,12 +4,9 @@
 import {Checkbox, FormControl, FormGroup} from 'react-bootstrap'
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
-// import './SearchBox.css'
 
 export default class SearchBox extends Component {
   render () {
-    // const textChangeCallback = this.props.onFilterTextInput
-    // const checkboxChangeCallback = this.props.onFilterCheckBoxInput
     return (
       <div className='SearchBox'>
         <FormGroup>
@@ -23,9 +20,11 @@ export default class SearchBox extends Component {
         <div>
           <Checkbox
             id='stocked-checkbox'
+            type='checkbox'
             onChange={this.props.onFilterCheckBoxInput}
             checked={this.props.inStock}
-            type='checkbox'>Only show products in stock
+          >
+            Only show products in stock
           </Checkbox>
         </div>
       </div>

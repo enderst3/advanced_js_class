@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
-// import {Table} from 'react-bootstrap'
+import {Checkbox} from 'react-bootstrap'
+
 
 function makeKey (category, name) {
   const convertedCategory = category.toLowerCase().replace(/ /g, '-')
@@ -32,11 +33,13 @@ export default class ProductRow extends Component {
             <tbody>
               <tr>
                 <td>
-                  <input
+                  <Checkbox
                     id={makeKey(this.props.currentCategory, this.props.name)}
                     checked={amIChecked} type='checkbox'
                     onChange={this.handleOnIsBuying}
-                  /></td>
+                  >
+                  </Checkbox>
+                </td>
                 <td className='item-color' style={style}>
                   {this.props.name}</td>
                 <td>${this.props.price}</td>
