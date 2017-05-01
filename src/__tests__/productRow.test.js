@@ -1,7 +1,6 @@
 import React from 'react'
 import ProductRow from '../ProductRow'
 import { shallow } from 'enzyme'
-
 // import renderer from 'react-test-renderer';
 
 /* global it describe expect jest */
@@ -23,7 +22,7 @@ describe('ProductRow', () => {
         onIsBuying={callback}
       />
     )
-    const inputObject = wrapper.find('input')
+    const inputObject = wrapper.find('Checkbox')
     inputObject.simulate('change', {target: {checked: true}})
     expect(callback.mock.calls).toEqual([['electronicsiphone 7', true, 429]])
   })
