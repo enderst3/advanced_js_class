@@ -36,8 +36,7 @@ export default class ProductRow extends Component {
                   <Checkbox
                     id={makeKey(this.props.currentCategory, this.props.name)}
                     checked={amIChecked} type='checkbox'
-                    onChange={this.handleOnIsBuying}
-                  >
+                    onChange={this.handleOnIsBuying}>
                   </Checkbox>
                 </td>
                 <td className='item-color' style={style}>
