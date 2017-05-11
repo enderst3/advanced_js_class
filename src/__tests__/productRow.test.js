@@ -44,7 +44,6 @@ describe('ProductRow', () => {
     )
     const itemObject = wrapper.find('.item-color')
     expect(itemObject.node.props.style.color).toBe('red')
-    // console.log(itemObject.node.props)
   })
 
   it('will show in stock items in black', () => {
@@ -104,10 +103,3 @@ describe('ProductRow', () => {
     expect(itemObject.length).toBe(0)
   })
 })
-
-// describe('makeKey', () => {
-//   it('can make key', () => {
-//     let newKey = makeKey('king', 'elvis')
-//     expect(newKey).toEqual('king-elvis')
-//   })
-// })
