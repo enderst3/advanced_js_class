@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react'
+// import ButtonBar from './ButtonBar'
 import propTypes from 'prop-types'
 import {Checkbox} from 'react-bootstrap'
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import SearchBox from './SearchBox'
 import ProductLine from './ProductLine'
+import ButtonBar from './ButtonBar'
 import {Jumbotron, Row, Col, Grid, Well, Panel} from 'react-bootstrap'
 
 /* global fetch */
@@ -28,12 +29,7 @@ class App extends Component {
     }
   }
 
-  /*
-   * isBuying = {
-   *   'Sporting GoodsBasketball': true,
-   *   'ElectronicsNexus 7': true
-   * }
-   */
+
 
   onFilterTextInput (e) {
     this.setState({searchTerm: e.target.value})
@@ -105,6 +101,7 @@ class App extends Component {
               <Well>
                 <p id='total-price'>Total: ${this.state.total}</p>
               </Well>
+              <ButtonBar />
             </Panel>
           </Col>
         </Row>
