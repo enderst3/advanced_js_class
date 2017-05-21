@@ -6,8 +6,12 @@
     "2": "^1.0.0",
     "eslint": "^3.19.0",
     "eslint-plugin-node": "^4.2.2",
+    "fetch": "^1.1.0",
+    "jest-fetch-mock": "^1.1.1",
+    "mock": "^0.1.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
     "react-script": "^2.0.5",
     "react-test-renderer": "^15.5.4"
@@ -19,8 +23,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-standard": "^3.0.1",
-    "jest": "^18.0.0",
+    "jest": "^20.0.0",
     "jest-enzyme": "^3.0.1",
+    "jest-fetch-mock": "^1.1.1",
     "react-addons-test-utils": "^15.5.1",
     "react-scripts": "^0.9.5"
   },

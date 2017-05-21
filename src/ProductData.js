@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ProductRow from './ProductRow'
 import propTypes from 'prop-types'
+import {Table} from 'react-bootstrap'
 
 export default class ProductData extends Component {
-  _generateTableGuts () {
+  generateTableGuts () {
     let tableRow = []
     let categories = []
     this.props.catalog.forEach((catalogEntry) => {
@@ -38,11 +39,11 @@ export default class ProductData extends Component {
   }
 
   render () {
-    const tableRow = this._generateTableGuts()
+    const tableRow = this.generateTableGuts()
     return (
-      <tbody>
+      <Table>
         {tableRow}
-      </tbody>
+      </Table>
     )
   }
 }

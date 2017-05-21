@@ -1,26 +1,18 @@
 import React, {Component} from 'react'
-// import './App.css'
 import SearchBox from './SearchBox'
-// import ProductRow from './ProductRow'
 import ProductLine from './ProductLine'
-// import ProductData from './ProductData'
-// import ProductHeadline from './ProductHeadline'
+import ButtonBar from './ButtonBar'
+import {Jumbotron, Row, Col, Grid, Well, Panel} from 'react-bootstrap'
 
-const SERVER_DATA = [
-  {category: 'Sporting Goods', price: 49.99, stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: 9.99, stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: 29.99, stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: 99.99, stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: 399.99, stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: 199.99, stocked: true, name: 'Nexus 7'}
-]
-
+/* global fetch */
 /**
 converts catedgory and name to a valid key string
 @param {string} category - the name of the category
 @param  {string} name - the name of the string
 @returns {string} - valid HTML id
 */
+
+const SERVER_ROOT = 'https://inventory-ebb9d.firebaseio.com/catalog.json'
 
 class App extends Component {
   constructor (props) {
@@ -32,16 +24,12 @@ class App extends Component {
       searchTerm: '',
       inStock: false,
       isBuying: {},
-      total: 0
+      total: 0,
+      catalog: []
     }
   }
 
-  /*
-   * isBuying = {
-   *   'Sporting GoodsBasketball': true,
-   *   'ElectronicsNexus 7': true
-   * }
-   */
+
 
   onFilterTextInput (e) {
     this.setState({searchTerm: e.target.value})
@@ -60,6 +48,7 @@ class App extends Component {
    */
   onIsBuying (key, value, price) {
     let newTotal
+    // put in button value here
     if (value) {
       newTotal = this.state.total + price
     } else {
@@ -70,25 +59,53 @@ class App extends Component {
     let newBuyObject = Object.assign(this.state.isBuying, {[key]: value})
     this.setState({isBuying: newBuyObject, total: newTotal})
   }
-
+  componentWillMount () {
+    fetch(`${SERVER_ROOT}`)
+    .then((response) => {
+      console.log('the server responded')
+      console.log(response)
+      return response.json()
+    })
+    .then((catalog) => {
+      this.setState({catalog: catalog})
+    })
+    .catch((error) => {
+      console.log('the server hates us')
+      console.log(error)
+    })
+  }
   render () {
     return (
-      <div>
-        <SearchBox
-          searchTerm={this.state.searchTerm}
-          inStock={this.state.inStock}
-          onFilterTextInput={this.onFilterTextInput}
-          onFilterCheckBoxInput={this.onFilterCheckBoxInput}
-        />
-        <ProductLine
-          catalog={SERVER_DATA}
-          searchTerm={this.state.searchTerm}
-          inStock={this.state.inStock}
-          isBuying={this.state.isBuying}
-          onIsBuying={this.onIsBuying}
-        />
-        <p id='total-price'>{this.state.total}</p>
-      </div>
+
+      <Grid>
+        <Row className='show-grid'>
+          <Col xs={10} xsOffset={1}>
+            <Panel footer='&copy;2017  My Place Inc.'>
+              <Jumbotron>
+                <h1>Welcome to my shop!</h1>
+                <p>We do not carry much but what we have is expensive!</p>
+              </Jumbotron>
+              <SearchBox
+                searchTerm={this.state.searchTerm}
+                inStock={this.state.inStock}
+                onFilterTextInput={this.onFilterTextInput}
+                onFilterCheckBoxInput={this.onFilterCheckBoxInput}
+              />
+              <ProductLine
+                catalog={this.state.catalog}
+                searchTerm={this.state.searchTerm}
+                inStock={this.state.inStock}
+                isBuying={this.state.isBuying}
+                onIsBuying={this.onIsBuying}
+              />
+              <Well>
+                <p id='total-price'>Total: ${this.state.total}</p>
+              </Well>
+              <ButtonBar />
+            </Panel>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }

@@ -1,10 +1,8 @@
 import React from 'react'
 import App from '../App'
 import { shallow } from 'enzyme'
-/* global it describe beforeEach expect */
-// import renderer from 'react-test-renderer';
 
-// global it describe
+/* global it describe beforeEach expect */
 
 describe('app', () => {
   describe('onIsBuying', () => {
@@ -28,6 +26,25 @@ describe('app', () => {
       const expected = {product1: false}
       expect(app.state.isBuying).toEqual(expected)
       expect(app.state.total).toEqual(0)
+    })
+  })
+
+  describe('callbacks', () => {
+    let app, wrapper
+
+    beforeEach(() => {
+      wrapper = shallow(<App />)
+      app = wrapper.instance()
+    })
+
+    it('performs onFilterTextInput', () => {
+      app.onFilterTextInput({target: {value: 'Football'}})
+      expect(wrapper.state().searchTerm).toBe('Football')
+    })
+
+    it('performs onFilterCheckboxInput', () => {
+      app.onFilterCheckBoxInput({target: {checked: true}})
+      expect(wrapper.state().inStock).toBe(true)
     })
   })
 })
